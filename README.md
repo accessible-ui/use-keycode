@@ -26,7 +26,7 @@
 <pre align="center">npm i @accessible/use-keycode</pre>
 <hr>
 
-A React hook for handling specific keycodes with a callback on `keyup`
+A React hook for handling specific key codes with a callback on `keyup`
 
 ## Quick Start
 
@@ -42,14 +42,14 @@ const Component = () => {
 
 ## API
 
-### `useKeycode(keyCode: number, callback: (event?: KeyboardEvent) => any)`
+### `useKeycode(`which`: number, callback: (event?: KeyboardEvent) => any)`
 
 #### Arguments
 
-| Argument | Type                             | Default     | Required? | Description                                                                        |
-| -------- | -------------------------------- | ----------- | --------- | ---------------------------------------------------------------------------------- |
-| keyCode  | number                           | `undefined` | Yes       | The keyCode you want to trigger the callback                                       |
-| callback | `(event?: KeyboardEvent) => any` | `undefined` | Yes       | The callback you want to trigger when the keyCode matches the latest `keyUp` event |
+| Argument | Type                             | Default     | Required? | Description                                                                              |
+| -------- | -------------------------------- | ----------- | --------- | ---------------------------------------------------------------------------------------- |
+| `which`  | number                           | `undefined` | Yes       | The `event.which` you want to trigger the callback                                       |
+| callback | `(event?: KeyboardEvent) => any` | `undefined` | Yes       | The callback you want to trigger when the `event.which` matches the latest `keyUp` event |
 
 #### Returns `MutableRefObject<any>`
 
