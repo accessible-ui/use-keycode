@@ -12,7 +12,7 @@ const useKeycode = (
 
     if (current) {
       const maybeCallback = (event): void => {
-        parseInt(event.code) === keyCode && callback(event)
+        parseInt(event.which) === keyCode && callback(event)
       }
       current.addEventListener('keyup', maybeCallback)
 

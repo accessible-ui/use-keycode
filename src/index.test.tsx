@@ -12,7 +12,7 @@ describe('useKeycode()', () => {
     }
 
     const result = render(<Component />)
-    fireEvent.keyUp(result.getByTestId('btn'), {key: 'Escape', code: 27})
+    fireEvent.keyUp(result.getByTestId('btn'), {key: 'Escape', which: 27})
     expect(mock).toBeCalled()
   })
 
@@ -25,7 +25,7 @@ describe('useKeycode()', () => {
     }
 
     const result = render(<Component />)
-    fireEvent.keyUp(result.getByTestId('btn'), {key: 'Escape', code: 24})
+    fireEvent.keyUp(result.getByTestId('btn'), {key: 'Escape', which: 24})
     expect(mock).not.toBeCalled()
   })
 })
