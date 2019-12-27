@@ -31,18 +31,24 @@ A React hook for handling specific key codes with a callback on `keyup`
 ## Quick Start
 
 ```jsx harmony
-import useKeycode from '@accessible/use-keycode'
-
+import {useKeycode, useKeycodes} from '@accessible/use-keycode'
+// one keycode
 const Component = () => {
   // logs event when escape key is pressed
   const ref = useKeycode(27, console.log)
+  return <div ref={ref} />
+}
+// several keycodes
+const Component = () => {
+  // logs event when escape or enter key is pressed
+  const ref = useKeycodes({27: console.log, 13: console.log})
   return <div ref={ref} />
 }
 ```
 
 ## API
 
-### `useKeycode(`which`: number, callback: (event?: KeyboardEvent) => any)`
+### `useKeycode(which: number, callback: (event?: KeyboardEvent) => any)`
 
 #### Arguments
 
@@ -50,6 +56,16 @@ const Component = () => {
 | -------- | -------------------------------- | ----------- | --------- | ---------------------------------------------------------------------------------------- |
 | `which`  | number                           | `undefined` | Yes       | The `event.which` you want to trigger the callback                                       |
 | callback | `(event?: KeyboardEvent) => any` | `undefined` | Yes       | The callback you want to trigger when the `event.which` matches the latest `keyUp` event |
+
+#### Returns `MutableRefObject<any>`
+
+### `useKeycodes(handlers: Record<number, (event?: KeyboardEvent) => any>)`
+
+#### Arguments
+
+| Argument   | Type                                             | Default     | Required? | Description                                                                           |
+| ---------- | ------------------------------------------------ | ----------- | --------- | ------------------------------------------------------------------------------------- |
+| `handlers` | `Record<number, (event?: KeyboardEvent) => any>` | `undefined` | Yes       | An object with keys matching the `event.which` you want to trigger the callback value |
 
 #### Returns `MutableRefObject<any>`
 

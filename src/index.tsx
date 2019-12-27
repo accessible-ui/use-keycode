@@ -1,9 +1,14 @@
-import {MutableRefObject, useRef} from 'react'
+import {MutableRefObject, useMemo, useRef} from 'react'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
 
-const useKeycode = (
+export const useKeycode = (
   which: number,
   callback: (event?: KeyboardEvent) => any
+): MutableRefObject<any> =>
+  useKeycodes(useMemo(() => ({[which]: callback}), [which, callback]))
+
+export const useKeycodes = (
+  handlers: Record<number, (event?: KeyboardEvent) => any>
 ): MutableRefObject<any> => {
   const ref = useRef<any>(null)
 
@@ -12,7 +17,7 @@ const useKeycode = (
 
     if (current) {
       const maybeCallback = (event): void => {
-        parseInt(event.which) === which && callback(event)
+        handlers[parseInt(event.which)]?.(event)
       }
       current.addEventListener('keyup', maybeCallback)
 
@@ -20,7 +25,7 @@ const useKeycode = (
         current.removeEventListener('keyup', maybeCallback)
       }
     }
-  }, [ref.current, callback, which])
+  }, [ref.current, handlers])
 
   return ref
 }
