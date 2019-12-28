@@ -1,17 +1,18 @@
 {
   "name": "@accessible/use-keycode",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "homepage": "https://github.com/accessible-ui/use-keycode#readme",
   "repository": "github:accessible-ui/use-keycode",
   "bugs": "https://github.com/accessible-ui/use-keycode/issues",
   "author": "Jared Lunde <jared.lunde@gmail.com> (https://jaredLunde.com)",
   "license": "MIT",
-  "description": "A React hook for handling specific keycodes with a callback on keyup",
+  "description": "A React hook for handling specific keycodes with a callback on keydown",
   "keywords": [
     "react",
     "react hook",
     "use keycode",
-    "usekeycode"
+    "usekeycode",
+    "keydown hook"
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",

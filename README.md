@@ -26,7 +26,7 @@
 <pre align="center">npm i @accessible/use-keycode</pre>
 <hr>
 
-A React hook for handling specific key codes with a callback on `keyup`
+A React hook for handling specific key codes with a callback on `keydown`
 
 ## Quick Start
 

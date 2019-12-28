@@ -19,10 +19,10 @@ export const useKeycodes = (
       const maybeCallback = (event): void => {
         handlers[parseInt(event.which)]?.(event)
       }
-      current.addEventListener('keyup', maybeCallback)
+      current.addEventListener('keydown', maybeCallback)
 
       return (): void => {
-        current.removeEventListener('keyup', maybeCallback)
+        current.removeEventListener('keydown', maybeCallback)
       }
     }
   }, [ref.current, handlers])
