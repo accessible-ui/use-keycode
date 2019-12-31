@@ -66,7 +66,7 @@ const Component = () => {
 | Argument       | Type                                             | Default     | Required? | Description                                                                                                                                     |
 | -------------- | ------------------------------------------------ | ----------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `handlers`     | `Record<number, (event?: KeyboardEvent) => any>` | `undefined` | Yes       | An object with keys matching the `event.which` you want to trigger the callback value                                                           |
-| `dependencies` | `any[]`                                          | `undefined` | Yes       | A list of dependencies that your handlers depend on. If no dependencies are provided, listeners will be removed and re-attached on each render. |
+| `dependencies` | `any[]`                                          | `undefined` | No        | A list of dependencies that your handlers depend on. If no dependencies are provided, listeners will be removed and re-attached on each render. |
 
 #### Returns `React.MutableRefObject<any>`
 
