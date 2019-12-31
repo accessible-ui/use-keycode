@@ -57,17 +57,18 @@ const Component = () => {
 | `which`  | number                           | `undefined` | Yes       | The `event.which` you want to trigger the callback                                       |
 | callback | `(event?: KeyboardEvent) => any` | `undefined` | Yes       | The callback you want to trigger when the `event.which` matches the latest `keyUp` event |
 
-#### Returns `MutableRefObject<any>`
+#### Returns `React.MutableRefObject<any>`
 
-### `useKeycodes(handlers: Record<number, (event?: KeyboardEvent) => any>)`
+### `useKeycodes(handlers: Record<number, (event?: KeyboardEvent) => any>, dependencies?: any[])`
 
 #### Arguments
 
-| Argument   | Type                                             | Default     | Required? | Description                                                                           |
-| ---------- | ------------------------------------------------ | ----------- | --------- | ------------------------------------------------------------------------------------- |
-| `handlers` | `Record<number, (event?: KeyboardEvent) => any>` | `undefined` | Yes       | An object with keys matching the `event.which` you want to trigger the callback value |
+| Argument       | Type                                             | Default     | Required? | Description                                                                                                                                     |
+| -------------- | ------------------------------------------------ | ----------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `handlers`     | `Record<number, (event?: KeyboardEvent) => any>` | `undefined` | Yes       | An object with keys matching the `event.which` you want to trigger the callback value                                                           |
+| `dependencies` | `any[]`                                          | `undefined` | Yes       | A list of dependencies that your handlers depend on. If no dependencies are provided, listeners will be removed and re-attached on each render. |
 
-#### Returns `MutableRefObject<any>`
+#### Returns `React.MutableRefObject<any>`
 
 ## LICENSE
 
