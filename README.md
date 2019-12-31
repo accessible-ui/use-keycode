@@ -41,7 +41,7 @@ const Component = () => {
 // several keycodes
 const Component = () => {
   // logs event when escape or enter key is pressed
-  const ref = useKeycodes({27: console.log, 13: console.log})
+  const ref = useKeycodes({27: console.log, 13: console.log}, [console.log])
   return <div ref={ref} />
 }
 ```
