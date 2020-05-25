@@ -41,7 +41,7 @@ const Component = () => {
 // several keycodes
 const Component = () => {
   // logs event when escape or enter key is pressed
-  const ref = useKeycodes({27: console.log, 13: console.log}, [console.log])
+  const ref = useKeycodes({27: console.log, 13: console.log})
   return <div ref={ref} />
 }
 ```
@@ -59,14 +59,13 @@ const Component = () => {
 
 #### Returns `React.MutableRefObject<any>`
 
-### `useKeycodes(handlers: Record<number, (event?: KeyboardEvent) => any>, dependencies?: any[])`
+### `useKeycodes(handlers: Record<number, (event?: KeyboardEvent) => any>)`
 
 #### Arguments
 
-| Argument       | Type                                             | Default     | Required? | Description                                                                                                                                     |
-| -------------- | ------------------------------------------------ | ----------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `handlers`     | `Record<number, (event?: KeyboardEvent) => any>` | `undefined` | Yes       | An object with keys matching the `event.which` you want to trigger the callback value                                                           |
-| `dependencies` | `any[]`                                          | `undefined` | No        | A list of dependencies that your handlers depend on. If no dependencies are provided, listeners will be removed and re-attached on each render. |
+| Argument   | Type                                             | Default     | Required? | Description                                                                           |
+| ---------- | ------------------------------------------------ | ----------- | --------- | ------------------------------------------------------------------------------------- |
+| `handlers` | `Record<number, (event?: KeyboardEvent) => any>` | `undefined` | Yes       | An object with keys matching the `event.which` you want to trigger the callback value |
 
 #### Returns `React.MutableRefObject<any>`
 
