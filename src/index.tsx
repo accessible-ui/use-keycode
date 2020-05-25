@@ -1,32 +1,19 @@
-import {MutableRefObject, useRef} from 'react'
-import useLayoutEffect from '@react-hook/passive-layout-effect'
+import * as React from 'react'
+import useEvent from '@react-hook/event'
 
 export const useKeycode = (
   which: number,
-  callback: (event?: KeyboardEvent) => any
-): MutableRefObject<any> => useKeycodes({[which]: callback})
+  onKeyDown: (event?: KeyboardEvent) => any
+): React.MutableRefObject<any> => useKeycodes({[which]: onKeyDown})
 
 export const useKeycodes = (
-  handlers: Record<number, (event: KeyboardEvent) => any>
-): MutableRefObject<any> => {
-  const ref = useRef<any>(null)
-  const storedHandlers = useRef(handlers)
-  storedHandlers.current = handlers
+  listeners: Record<number, (event: KeyboardEvent) => any>
+): React.MutableRefObject<any> => {
+  const ref = React.useRef<any>(null)
 
-  useLayoutEffect(() => {
-    const current = ref.current
-
-    if (current) {
-      const maybeCallback = (event: KeyboardEvent): void => {
-        storedHandlers.current[event.which]?.(event)
-      }
-
-      current.addEventListener('keydown', maybeCallback)
-      return (): void => {
-        current.removeEventListener('keydown', maybeCallback)
-      }
-    }
-  }, [ref])
+  useEvent(ref, 'keydown', (event): void => {
+    listeners[event.which]?.(event)
+  })
 
   return ref
 }
