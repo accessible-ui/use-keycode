@@ -1,5 +1,5 @@
 import React from 'react'
-import {render, fireEvent} from '@testing-library/react'
+import {render, fireEvent, screen} from '@testing-library/react'
 import useKeycode from './index'
 
 describe('useKeycode()', () => {
@@ -8,11 +8,11 @@ describe('useKeycode()', () => {
 
     const Component = () => {
       const ref = useKeycode(27, mock)
-      return <button data-testid="btn" ref={ref} />
+      return <button data-testid='btn' ref={ref} />
     }
 
-    const result = render(<Component />)
-    fireEvent.keyDown(result.getByTestId('btn'), {key: 'Escape', which: 27})
+    render(<Component />)
+    fireEvent.keyDown(screen.getByTestId('btn'), {key: 'Escape', which: 27})
     expect(mock).toBeCalled()
   })
 
@@ -21,11 +21,11 @@ describe('useKeycode()', () => {
 
     const Component = () => {
       const ref = useKeycode(27, mock)
-      return <button data-testid="btn" ref={ref} />
+      return <button data-testid='btn' ref={ref} />
     }
 
-    const result = render(<Component />)
-    fireEvent.keyDown(result.getByTestId('btn'), {key: 'Escape', which: 24})
+    render(<Component />)
+    fireEvent.keyDown(screen.getByTestId('btn'), {key: 'Escape', which: 24})
     expect(mock).not.toBeCalled()
   })
 })
